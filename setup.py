@@ -16,8 +16,8 @@ setup(
     author='Boris Raicheff',
     author_email='b@raicheff.com',
     url='https://github.com/raicheff/flask-sendgrid',
-    install_requires=['flask', 'sendgrid', 'six'],
-    py_modules=['flask_sendgrid'],
+    install_requires=('flask', 'sendgrid', 'six'),
+    py_modules=('flask_sendgrid',),
 )
 
 
