@@ -40,7 +40,7 @@ class SendGrid(object):
         self.client = SendGridAPIClient(apikey=api_key).client
 
         if blueprint is not None:
-            blueprint.add_url_rule('/sendgrid', 'sendgrid', self.handle_webhook, methods=['POST'])
+            blueprint.add_url_rule('/sendgrid', 'sendgrid', self.handle_webhook, methods=('POST',))
 
     def handle_webhook(self):
         """
