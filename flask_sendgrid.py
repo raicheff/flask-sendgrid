@@ -6,15 +6,13 @@
 #
 
 
-import logging
+import warnings
 
 from flask import Response, request
 from flask.signals import Namespace
 from sendgrid import SendGridAPIClient
 from six.moves.http_client import OK
 
-
-logger = logging.getLogger('Flask-SendGrid')
 
 sendgrid_events = Namespace().signal('sendgrid.events')
 
@@ -34,7 +32,7 @@ class SendGrid(object):
 
         api_key = app.config.get('SENDGRID_API_KEY')
         if api_key is None:
-            logger.warning('SENDGRID_API_KEY not set')
+            warnings.warn('SENDGRID_API_KEY not set', RuntimeWarning, stacklevel=2)
             return
 
         self.client = SendGridAPIClient(apikey=api_key).client
